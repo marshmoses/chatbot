@@ -1,0 +1,1 @@
+INFO:root:User ID: 123 | Query: show me products under $100 | Response: [{'product_name': 'product1', 'price': 50}, {'product_name': 'product2', 'price': 80}]
