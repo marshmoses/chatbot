@@ -1,0 +1,64 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "toc_visible": true,
+      "mount_file_id": "1zLLo19cDONdITlzJ10Xw0HStEj8eiyPd",
+      "authorship_tag": "ABX9TyNqJosVFebmESb9tKk29f3X",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/marshmoses/chatbot/blob/main/mongo_loader_py.\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "id": "CMz_jCo3Mtki"
+      },
+      "outputs": [],
+      "source": [
+        "import pymongo\n",
+        "\n",
+        "class MongoDBLoader:\n",
+        "    def __init__(self, connection_string, database_name, collection_name):\n",
+        "        self.connection_string = connection_string\n",
+        "        self.database_name = database_name\n",
+        "        self.collection_name = collection_name\n",
+        "        self.client = pymongo.MongoClient(connection_string)\n",
+        "        self.db = self.client[database_name]\n",
+        "        self.collection = self.db[collection_name]\n",
+        "\n",
+        "    def find_documents(self, query):\n",
+        "        \"\"\"\n",
+        "        Find documents in the collection based on the query.\n",
+        "\n",
+        "        Args:\n",
+        "            query (dict): A dictionary representing the query.\n",
+        "\n",
+        "        Returns:\n",
+        "            list: A list of documents matching the query.\n",
+        "        \"\"\"\n",
+        "        return list(self.collection.find(query))\n"
+      ]
+    }
+  ]
+}
